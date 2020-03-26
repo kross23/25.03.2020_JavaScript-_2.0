@@ -1,8 +1,8 @@
-let  money=0, 
+let  money=0, //переменныйе для задания
     income = '', 
     addExpenses = '', 
     deposit = 0, 
     mission = 1, 
     period = 0;
-    alert('модальном окне (alert) ');
-    console.log('Вывести в консоль сообщение с любым текстом');
+    alert('модальное окно-(alert) ');
+    console.log(' сообщение бля консоли');

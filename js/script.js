@@ -5,4 +5,4 @@ let  money=0, //переменныйе для задания
     mission = 1, 
     period = 0;
     alert('модальное окно-(alert) ');
-    console.log(' сообщение бля консоли');
+    console.log(' сообщение для консоли');

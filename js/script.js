@@ -14,10 +14,8 @@ let  money=20000, //переменныйе для задания
     console.log('длина строки',addExpenses.length);
     console.log('Период равен',period,'месяцев');
     console.log('Цель заработать',mission ,'рублей/долларов/гривен/юани');
-    let a = addExpenses.toLocaleLowerCase();
-    console.log(a);
-    let b = addExpenses.toLocaleUpperCase();
-    console.log(b);
+    console.log('строка в нижнем регистре ',aaddExpenses.toLocaleLowerCase());
+    console.log('строка в верхнем регистре',baddExpenses.toLocaleUpperCase());
     console.log( 'budgetDay', budgetDay);
     console.log(arr,' строка разбита по запятым ');
     arr = addExpenses.split('');

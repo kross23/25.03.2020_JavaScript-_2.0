@@ -33,16 +33,14 @@ let  money=20000, //переменныйе для задания
  let expenses1;
  let expenses2;
  //пункт 5
- if(confirm('Введите обязательную статью расходов?')){
-   expenses1 = prompt('Введите обязательную статью расходов:');
-   amount1 = +prompt('Во сколько это обойдется?');
+ 
+   expenses1 = prompt(' статья расходов:');
+   amount1 = +prompt('сумма?');
    expenses += amount1;
-   expenses2 = prompt('Введите обязательную статью расходов:');
-   amount2 = +prompt('Во сколько это обойдется?');
+   expenses2 = prompt('статья расходов:');
+   amount2 = +prompt('сумма?');
    expenses += amount2;
- }else{
-   alert(' статей нет');
- }
+
 
 //пункт 6 
 budgetMonth = money - expenses;

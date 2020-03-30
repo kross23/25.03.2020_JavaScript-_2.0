@@ -2,7 +2,7 @@ let  money=20000, //переменныйе для задания
     income = 'автоэлектрик в автосервисе, электрик обычный, работа на севере', 
     addExpenses = 'комуналка , электричество ,топливо для автромобиля', 
     deposit = true, 
-    mission = 1000000, 
+    mission = 100000, 
     period = 6,
     budgetDay = Math.floor(money/30), 
     budgetMonth = 0, //бютжет на месятц
@@ -56,10 +56,10 @@ console.log('Что то пошло не так');
 
  console.log('amount1:',amount1);
  console.log('amount2:',amount2);
- console.log('expenses1:',expenses1);
- console.log('expenses2:',expenses2);
- console.log('budgetMonth:',budgetMonth);
- console.log('budgetDay:',budgetDay);
+ console.log(' статья расходов1:',expenses1);
+ console.log(' статься расходов2:',expenses2);
+ console.log('бютжет на месяц :',budgetMonth);
+ console.log('бютжет на день:',budgetDay);
  console.log('цель будет достигнута за ',period,'месяцев');
 
 

@@ -15,7 +15,7 @@ let  money=20000, //переменныйе для задания
    // console.log(typeof(deposit));
    // console.log('длина строки',addExpenses.length);
    // console.log('Период равен',period,'месяцев');
-   // console.log('Цель заработать',mission ,'рублей/долларов/гривен/юани');
+    console.log('Цель заработать',mission ,'рублей/долларов/гривен/юани');
     //console.log('строка в нижнем регистре ', addExpenses.toLocaleLowerCase());
    // console.log('строка в верхнем регистре', addExpenses.toLocaleUpperCase());
    // console.log( 'budgetDay', budgetDay);
@@ -33,27 +33,22 @@ let  money=20000, //переменныйе для задания
  let expenses1;
  let expenses2;
  //пункт 5
- 
    expenses1 = prompt(' статья расходов:');
    amount1 = +prompt('сумма?');
-   expenses += amount1;
    expenses2 = prompt('статья расходов:');
    amount2 = +prompt('сумма?');
-   expenses += amount2;
-
-
 //пункт 6 
-budgetMonth = money - expenses;
+budgetMonth = money -(amount1 + amount2);
  //пунк 7
 period = Math.ceil(mission / budgetMonth);//Math.ceil(5.1)округление в большую сторону
  //пункт 8
-budgetDay = Math.floor((money - expenses)/30);
+budgetDay = Math.floor((money - (amount1 + amount2))/30);
 // 9 пункт
 if(budgetDay > 1200){
   console.log('e вас высокий уровень дохода');
 }else if(budgetDay > 600 && budgetDay < 1200){
  console.log('у вас средний уровень дохода');
-}else if(budgetDay < 600 && budgetDay > 1){
+}else if(budgetDay < 600 && budgetDay >= 1){
 console.log('у вас низкий уровень дохода');
 }else{
 console.log('Что то пошло не так');

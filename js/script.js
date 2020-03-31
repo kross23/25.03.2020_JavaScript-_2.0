@@ -65,6 +65,7 @@ const getStatusIncome =()=>{    // функция урвень дохода
 
 
  getStatusIncome();
+ showTypeOf(getStatusIncome);
 
 //заготовка )
 //  let ArrExpenses = [];

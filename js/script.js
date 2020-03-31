@@ -42,36 +42,29 @@ const getExpensesMonth =(a,b)=>{  //   1
   const showTypeOf= (a)=>{   //-7
     console.log(typeof(a));
   };
-const incomeLevel =( Day)=>{     // функция урвень дохода
-    if(Day > 1200){
-      console.log('e вас высокий уровень дохода');
-    }else if(Day > 600 && Day < 1200){
-    console.log('у вас средний уровень дохода');
-    }else if(Day < 600 && Day >= 1){
-    console.log('у вас низкий уровень дохода');
-    }else{
-    console.log('Что то пошло не так');
+
+const getStatusIncome =()=>{    // функция урвень дохода  
+  let accumulatedMonth = getAccumulatedMonth(money ,getExpensesMonth(amount1, amount2)); // 3
+  let budgetDay = Math.floor(accumulatedMonth/30);
+ 
+  console.log(' расходы в месяц getExpensesMonth:', getExpensesMonth(amount1,amount2));
+  console.log('бютжет на месяц :',accumulatedMonth);
+  console.log('бютжет на день:',budgetDay);
+  console.log('цель будет достигнута за ',getTargetMonth(mission,accumulatedMonth),'месяцев');
+  console.log('getExpensesMonth',getExpensesMonth);
+  if(budgetDay > 1200){
+    console.log('e вас высокий уровень дохода');
+  }else if(budgetDay > 600 && budgetDay < 1200){
+  console.log('у вас средний уровень дохода');
+  }else if(budgetDay < 600 && budgetDay >= 1){
+  console.log('у вас низкий уровень дохода');
+  }else{
+  console.log('Что то пошло не так');
   }
 };
 
-  //................................
-  let accumulatedMonth = getAccumulatedMonth(money ,getExpensesMonth(amount1, amount2)); // 3
-  let budgetDay = Math.floor(accumulatedMonth/30);
-//budgetMonth = money -(amount1 + amount2);// 5
-//period = Math.ceil(mission / budgetMonth);//Math.ceil(5.1)округление в большую сторону
 
-
-
- console.log('amount1:',amount1);
- console.log('amount2:',amount2);
- console.log(' статья расходов1:',expenses1);
- console.log(' статься расходов2:',expenses2);
- console.log('бютжет на месяц :',accumulatedMonth);
- console.log('бютжет на день:',budgetDay);
- console.log('цель будет достигнута за ',getTargetMonth(mission,accumulatedMonth),'месяцев');
- console.log('результат',accumulatedMonth);
- console.log('getExpensesMonth',getExpensesMonth);
-
+ getStatusIncome();
 
 //заготовка )
 //  let ArrExpenses = [];

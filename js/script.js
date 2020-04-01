@@ -69,7 +69,7 @@ let Monysum = 0;
   };
 
   const getTargetMonth =(a, b)=>{     
-  if(Math.ceil(a / b)<=0){
+  if(Math.ceil(a / b) < 0 ||Math.ceil(a / b) === Infinity){
     console.log('Цель не будет достигнута');
    } else{
     console.log('цель будет достигнута за ',Math.ceil(a / b),'месяцев');

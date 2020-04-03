@@ -30,8 +30,7 @@ let target = 150000;
         let  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
           appData.addExpenses = addExpenses.toLowerCase().split(',');
           appData.deposit = confirm('Есть ли у вас депозит в банке?');
-      },
-      getExpensesMonth:()=>{  
+
           for(let i=0;i<2;i++){
             let sum , text;
               text = prompt('введите статью расходов:','текст');
@@ -42,13 +41,18 @@ let target = 150000;
                 sum = +prompt('во сколько это обойдется?','1500');
                }
                    appData.expenses[text] = sum;
-                   appData.expensesMonth += sum;
+                   
               }else{
-                    appData.expenses[text]= sum;
-                    appData.expensesMonth += sum;
+                    appData.expenses[text]= sum;               
               }
           }
-        console.log('расходы', appData.expenses, 'сумма расходов ',appData.expensesMonth);
+      },
+      getExpensesMonth:()=>{  
+        for(let i in appData.expenses){
+          
+          appData.expensesMonth = appData.expenses[i];
+        }
+console.log('сумма расходов-', appData.expensesMonth);
       },
       getBudget:(s)=>{  // пере
         appData.budget = s;
@@ -56,9 +60,7 @@ let target = 150000;
         appData.budgetDay   = Math.ceil(appData.budgetMonth/30);
         console.log('appData.budgetDay: ', appData.budgetDay);
         console.log('appData.budgetMonth: ', appData.budgetMonth);
-
     },
-
 
     getTargetMonth : (a)=>{     
       if(Math.ceil(a / appData.budgetMonth) < 0 ||Math.ceil(a / appData.budgetMonth) === Infinity){
@@ -82,10 +84,6 @@ let target = 150000;
 
 //..........................................................
 
-
-
-//...........................................................
-
  appData.ascing();
  appData.getExpensesMonth();
 appData.getBudget(money);
@@ -95,17 +93,3 @@ appData.getStatusIncome();
  console.log(typeof(money));
  console.log(appData.deposit);
  console.log('income', appData.income);
- 
-
-
-
-
-
-
-
-
-
-  
-
- 
-  //appData.getStatusIncome();

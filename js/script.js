@@ -26,7 +26,7 @@ let target = 150000;
       expensesMonth:0,
 
       //---методы----
-      ascing:()=>{
+      asking:()=>{
         let  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
           appData.addExpenses = addExpenses.toLowerCase().split(',');
           appData.deposit = confirm('Есть ли у вас депозит в банке?');
@@ -85,7 +85,7 @@ console.log('сумма расходов-', appData.expensesMonth);
 
 //..........................................................
 
- appData.ascing();
+ appData.asking();
  appData.getExpensesMonth();
 appData.getBudget(money);
 
@@ -94,3 +94,9 @@ appData.getStatusIncome();
  console.log(typeof(money));
  console.log(appData.deposit);
  console.log('income', appData.income);
+
+console.log('Наша программа включает в себя данные:');
+ for(let i in appData){
+
+ console.log( 'ключ : '+i+'   значение : '+ appData[i]);
+ }

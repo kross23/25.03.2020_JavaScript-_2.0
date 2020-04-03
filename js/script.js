@@ -46,6 +46,7 @@ let target = 150000;
                     appData.expenses[text]= sum;               
               }
           }
+          console.log('обьект с расходами',appData.expenses);
       },
       getExpensesMonth:()=>{  
         for(let i in appData.expenses){

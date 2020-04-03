@@ -1,7 +1,18 @@
 'use strict';
-let  money=0;
+let  money=0,
+ IsNamber=(n)=>{
+  return !isNaN(parseFloat(n)) && isFinite(n);
+ };
+const statr = ()=>{
+  do{
+    money = prompt('Ваш месячный доход?');
+  }while(!IsNamber(money) || money === '' || money === null);
+  };
+  statr();
+
 let target = 150000;
   let appData={
+    target : 150000,
        budget:money,
        income:{},
     addIncome:[],
@@ -68,19 +79,13 @@ let target = 150000;
         }
       }
   };
- 
+
 //..........................................................
 
- let IsNamber=(n)=>{
-  return !isNaN  (parseFloat(n)) && isFinite(n);
- };
- const statr = ()=>{
-  do{
-    money = prompt('Ваш месячный доход?');
-  }while(!IsNamber(money) || money === '' || money === null);
-  };
+
+
 //...........................................................
- statr();
+
  appData.ascing();
  appData.getExpensesMonth();
 appData.getBudget(money);

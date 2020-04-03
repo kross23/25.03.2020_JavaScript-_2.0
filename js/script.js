@@ -50,7 +50,7 @@ let target = 150000;
       getExpensesMonth:()=>{  
         for(let i in appData.expenses){
           
-          appData.expensesMonth = appData.expenses[i];
+          appData.expensesMonth += appData.expenses[i];
         }
 console.log('сумма расходов-', appData.expensesMonth);
       },

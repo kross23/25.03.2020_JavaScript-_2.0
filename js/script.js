@@ -14,10 +14,12 @@ statr();
 let appData = {
   target: 150000,
   budget: money,
-  income: {},
+  income: {}, //
   addIncome: [],
+  IncomeSumm:0,
   expenses: {},
   addExpenses: [],
+  cashIncome: 0,
   deposit: false,
   percentDeposit: 0,
   manyDeposit: 0,
@@ -31,8 +33,16 @@ let appData = {
   asking: () => {
     if (confirm('есть ли у вас дополнительный заработок?')) {
       let itemIncome = prompt('какой дополнительный заработок', 'такси');
+      while (IsNamber(itemIncome)) {
+        itemIncome = prompt('какой дополнительный заработок', 'такси');//проверка данных 
+      }
       let cashIncome = prompt('сколько на этом выходит?', '500');
+      while (!IsNamber(cashIncome)) {
+        cashIncome = +prompt('сколько на этом выходит?', '500');//проверка данных 
+      }
+      appData.IncomeSumm +=cashIncome;   //сумма дополнительного заработка
       appData.income[itemIncome] = cashIncome;
+
     }
 
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
@@ -41,7 +51,11 @@ let appData = {
 
     for (let i = 0; i < 2; i++) {
       let sum, text;
-      text = prompt('введите статью расходов:', 'текст');
+      text = prompt('введите статью расходов:', 'текст'); //ввод статьи обязательных расходов
+      while (IsNamber(sum)) {
+        sum = prompt('введите статью расходов:', 'текст'); ////проверка данных 
+      }
+
       sum = +prompt('во сколько это обойдется?', '1500');
       if (!IsNamber(sum)) {
 
@@ -84,8 +98,9 @@ let appData = {
   },
   getInfoDeposit: () => {
     if (appData.deposit) {
-      appData.percentDeposit = prompt('годовой процент ?', '0,5');
-      appData.manyDeposit = prompt('сумма депозита ', ' 10000');
+      appData.percentDeposit = prompt('годовой процент ?', '0,5');//  годовой процент депозита
+      
+      appData.manyDeposit = prompt('сумма депозита ', ' 10000');  // сумма депозита
     }
   },
   calcSavedMoney: () => {
@@ -106,11 +121,11 @@ console.log('appData.calcSavedMoney(): ', appData.calcSavedMoney());
 console.log(typeof (money));
 console.log(appData.deposit);
 console.log('расходы за месяц' + appData.expensesMonth);
-
 console.log('Наша программа включает в себя данные:');
-for (let i in appData) {
-  console.log('ключ : ' + i + '   значение : ' + appData[i]);
-}
-console.log('money', appData.calcSavedMoney);
 console.log('процент', appData.percentDeposit);
 console.log('deposit', appData.manyDeposit);
+//  appData.addExpenses.join(' , ');
+console.log(' appData.addExpenses : ', appData.addExpenses.join(' , '));//2) Возможные расходы (addExpenses) вывести строкой 
+for (let i in appData) {
+  console.log('ключ : ' + i);
+}

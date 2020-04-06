@@ -19,8 +19,8 @@ let appData = {
   expenses: {},
   addExpenses: [],
   deposit: false,
-  percentDeposit:0,
-  manyDeposit:0,
+  percentDeposit: 0,
+  manyDeposit: 0,
   mission: 150000,
   period: 3,
   budgetDay: 0,
@@ -29,10 +29,10 @@ let appData = {
 
   //---методы----
   asking: () => {
-    if(confirm('есть ли у вас дополнительный заработок?')){
-      let itemIncome = prompt('какой дополнительный заработок' , 'такси');
-      let cashIncome = prompt('сколько на этом выходит?' , '500');
-      appData.income[itemIncome]=cashIncome;
+    if (confirm('есть ли у вас дополнительный заработок?')) {
+      let itemIncome = prompt('какой дополнительный заработок', 'такси');
+      let cashIncome = prompt('сколько на этом выходит?', '500');
+      appData.income[itemIncome] = cashIncome;
     }
 
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
@@ -69,7 +69,7 @@ let appData = {
 
   },
   getTargetMonth: (a) => {
-    return appData.mission/ appData.budgetMonth; 
+    return appData.mission / appData.budgetMonth;
   },
   getStatusIncome: () => { // функция урвень дохода  
     if (appData.budgetDay > 1200) {
@@ -82,14 +82,14 @@ let appData = {
       console.log('Что то пошло не так');
     }
   },
-  getInfoDeposit:()=>{
-    if (appData.deposit){
-      appData.percentDeposit = prompt('годовой процент ?','0,5');
-      appData.manyDeposit= prompt('сумма депозита ',' 10000'); 
+  getInfoDeposit: () => {
+    if (appData.deposit) {
+      appData.percentDeposit = prompt('годовой процент ?', '0,5');
+      appData.manyDeposit = prompt('сумма депозита ', ' 10000');
     }
   },
-  calcSavedMoney:()=>{
-    return appData.budgetMonth*appData.period;
+  calcSavedMoney: () => {
+    return appData.budgetMonth * appData.period;
   }
 
 };
@@ -105,12 +105,12 @@ appData.getInfoDeposit();
 console.log('appData.calcSavedMoney(): ', appData.calcSavedMoney());
 console.log(typeof (money));
 console.log(appData.deposit);
-console.log('расходы за месяц'+ appData.expensesMonth);
+console.log('расходы за месяц' + appData.expensesMonth);
 
 console.log('Наша программа включает в себя данные:');
 for (let i in appData) {
   console.log('ключ : ' + i + '   значение : ' + appData[i]);
 }
-console.log( 'money',appData.calcSavedMoney);
-console.log('процент',appData.percentDeposit);
-console.log('deposit',appData.manyDeposit);
+console.log('money', appData.calcSavedMoney);
+console.log('процент', appData.percentDeposit);
+console.log('deposit', appData.manyDeposit);

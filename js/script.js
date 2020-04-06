@@ -5,7 +5,7 @@ let money,
   };
 const statr = () => {
   do {
-    money = prompt('Ваш месячный доход?');
+    money = +prompt('Ваш месячный доход?', 30000);
   } while (!IsNamber(money) || money === '' || money === null);
 };
 statr();
@@ -16,7 +16,7 @@ let appData = {
   budget: money,
   income: {}, //
   addIncome: [],
-  IncomeSumm:0,
+  IncomeSumm: 0,
   expenses: {},
   addExpenses: [],
   cashIncome: 0,
@@ -34,13 +34,13 @@ let appData = {
     if (confirm('есть ли у вас дополнительный заработок?')) {
       let itemIncome = prompt('какой дополнительный заработок', 'такси');
       while (IsNamber(itemIncome)) {
-        itemIncome = prompt('какой дополнительный заработок', 'такси');//проверка данных 
+        itemIncome = prompt('какой дополнительный заработок', 'такси'); //проверка данных 
       }
-      let cashIncome = prompt('сколько на этом выходит?', '500');
+      let cashIncome = prompt('сколько на этом выходит?', 500);
       while (!IsNamber(cashIncome)) {
-        cashIncome = +prompt('сколько на этом выходит?', '500');//проверка данных 
+        cashIncome = +prompt('сколько на этом выходит?', 500); //проверка данных 
       }
-      appData.IncomeSumm +=cashIncome;   //сумма дополнительного заработка
+      appData.IncomeSumm += cashIncome; //сумма дополнительного заработка
       appData.income[itemIncome] = cashIncome;
 
     }
@@ -51,16 +51,16 @@ let appData = {
 
     for (let i = 0; i < 2; i++) {
       let sum, text;
-      text = prompt('введите статью расходов:', 'текст'); //ввод статьи обязательных расходов
+      text = prompt('введите статью расходов:', 'текст-1'); //ввод статьи обязательных расходов
       while (IsNamber(sum)) {
-        sum = prompt('введите статью расходов:', 'текст'); ////проверка данных 
+        sum = prompt('введите статью расходов:', 'текст-2');
       }
 
-      sum = +prompt('во сколько это обойдется?', '1500');
+      sum = +prompt('во сколько это обойдется?', 1500);
       if (!IsNamber(sum)) {
 
         while (!IsNamber(sum)) {
-          sum = +prompt('во сколько это обойдется?', '1500');
+          sum = +prompt('во сколько это обойдется?', 1500);
         }
         appData.expenses[text] = sum;
 
@@ -98,9 +98,8 @@ let appData = {
   },
   getInfoDeposit: () => {
     if (appData.deposit) {
-      appData.percentDeposit = prompt('годовой процент ?', '0,5');//  годовой процент депозита
-      
-      appData.manyDeposit = prompt('сумма депозита ', ' 10000');  // сумма депозита
+      appData.percentDeposit = prompt('годовой процент ?', '0,5');
+      appData.manyDeposit = prompt('сумма депозита ', ' 10000');
     }
   },
   calcSavedMoney: () => {
@@ -122,10 +121,11 @@ console.log(typeof (money));
 console.log(appData.deposit);
 console.log('расходы за месяц' + appData.expensesMonth);
 console.log('Наша программа включает в себя данные:');
+console.log('money', appData.calcSavedMoney);
 console.log('процент', appData.percentDeposit);
 console.log('deposit', appData.manyDeposit);
 //  appData.addExpenses.join(' , ');
-console.log(' appData.addExpenses : ', appData.addExpenses.join(' , '));//2) Возможные расходы (addExpenses) вывести строкой 
+console.log(' appData.addExpenses : ', appData.addExpenses.join(' , ')); //2) Возможные расходы (addExpenses) вывести строкой 
 for (let i in appData) {
-  console.log('ключ : ' + i);
+  console.log('ключ : ' + i + ' значение ' + appData[i]);
 }

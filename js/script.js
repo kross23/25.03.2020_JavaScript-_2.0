@@ -1,18 +1,18 @@
 'use strict';
 let money,
   IsNamber = (n) => {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+    return !isNaN(parseFloat(n)) && isFinite(n); //!isNaN(parseFloat(n)) && n !== '';
   };
 const statr = () => {
   do {
-    money = +prompt('Ваш месячный доход?', 30000);
-  } while (!IsNamber(money) || money === '' || money === null);
+    money = prompt('Ваш месячный доход?', 30000);
+  } while (!IsNamber(money) || money === null);
+  money = +money;
 };
 statr();
 
 
 let appData = {
-  target: 150000,
   budget: money,
   income: {}, //
   addIncome: [],
@@ -32,43 +32,36 @@ let appData = {
   //---методы----
   asking: () => {
     if (confirm('есть ли у вас дополнительный заработок?')) {
-      let itemIncome = prompt('какой дополнительный заработок', 'такси');
-      while (IsNamber(itemIncome)) {
-        itemIncome = prompt('какой дополнительный заработок', 'такси'); //проверка данных 
-      }
-      let cashIncome = prompt('сколько на этом выходит?', 500);
-      while (!IsNamber(cashIncome)) {
-        cashIncome = +prompt('сколько на этом выходит?', 500); //проверка данных 
-      }
+      let itemIncome, cashIncome;
+      do {
+        itemIncome = prompt('какой дополнительный заработок', 'такси');
+      } while (IsNamber(itemIncome) || itemIncome === '' || itemIncome === null);
+      do {
+        cashIncome = prompt('выходит в месяц', 500);
+      } while (!IsNamber(cashIncome) || cashIncome === '' || cashIncome === null);
+      cashIncome = +cashIncome;
       appData.IncomeSumm += cashIncome; //сумма дополнительного заработка
       appData.income[itemIncome] = cashIncome;
 
     }
 
-    let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+    let addExpenses = prompt('Возможные расходы за рассчитываемый период через запятую', 'бензин,молоко,батарейки,спички');
     appData.addExpenses = addExpenses.toLowerCase().split(',');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 1; i < 3; i++) {
       let sum, text;
-      text = prompt('введите статью расходов:', 'текст-1'); //ввод статьи обязательных расходов
-      while (IsNamber(sum)) {
-        sum = prompt('введите статью расходов:', 'текст-2');
-      }
 
-      sum = +prompt('во сколько это обойдется?', 1500);
-      if (!IsNamber(sum)) {
+      do {
+        text = prompt('введите статью расходов:', 'текст - ' + i);
+      } while (IsNamber(text) || text === '' || text === null);
 
-        while (!IsNamber(sum)) {
-          sum = +prompt('во сколько это обойдется?', 1500);
-        }
-        appData.expenses[text] = sum;
-
-      } else {
-        appData.expenses[text] = sum;
-      }
+      do {
+        sum = prompt('во сколько это обойдется?', 1500 + i);
+      } while (!IsNamber(sum) || sum === '' || sum === null);
+      sum = +sum;
+      appData.expenses[text] = sum;
     }
-    console.log('обьект с расходами', appData.expenses);
   },
   getExpensesMonth: () => {
     for (let i in appData.expenses) {
@@ -98,8 +91,17 @@ let appData = {
   },
   getInfoDeposit: () => {
     if (appData.deposit) {
-      appData.percentDeposit = prompt('годовой процент ?', '0,5');
-      appData.manyDeposit = prompt('сумма депозита ', ' 10000');
+
+
+      do {
+        appData.percentDeposit = prompt('годовой процент ?', 0.5);
+      } while (!IsNamber(appData.percentDeposit) || appData.percentDeposit === '' || appData.percentDeposit === null);
+
+      do {
+        appData.manyDeposit = prompt('сумма депозита ', 10000);
+      } while (!IsNamber(appData.manyDeposit) || appData.manyDeposit === '' || appData.manyDeposit === null);
+      appData.percentDeposit = +appData.percentDeposit;
+      appData.manyDeposit += appData.manyDeposit;
     }
   },
   calcSavedMoney: () => {
@@ -125,7 +127,7 @@ console.log('money', appData.calcSavedMoney);
 console.log('процент', appData.percentDeposit);
 console.log('deposit', appData.manyDeposit);
 //  appData.addExpenses.join(' , ');
-console.log(' appData.addExpenses : ', appData.addExpenses.join(' , ')); //2) Возможные расходы (addExpenses) вывести строкой 
+console.log(' appData.addExpenses : ', appData.addExpenses.join(' , ')); //расходы (addExpenses) вывести строкой 
 for (let i in appData) {
   console.log('ключ : ' + i + ' значение ' + appData[i]);
 }

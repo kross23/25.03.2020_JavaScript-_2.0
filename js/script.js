@@ -95,8 +95,6 @@ let appData = {
   },
   getInfoDeposit: () => {
     if (appData.deposit) {
-
-
       do {
         appData.percentDeposit = prompt('годовой процент ?', 0.5);
       } while (!IsNamber(appData.percentDeposit) || appData.percentDeposit === '' || appData.percentDeposit === null);
@@ -111,9 +109,7 @@ let appData = {
   calcSavedMoney: () => {
     return appData.budgetMonth * appData.period;
   }
-
 };
-
 //..........................................................
 appData.asking();
 appData.getExpensesMonth();
@@ -131,7 +127,14 @@ console.log('money', appData.calcSavedMoney);
 console.log('процент', appData.percentDeposit);
 console.log('deposit', appData.manyDeposit);
 //  appData.addExpenses.join(' , ');
-console.log(' appData.addExpenses : ', appData.addExpenses.join(' , ')); //расходы (addExpenses) вывести строкой 
+let addexp=[];
+for(let i=0 ;i < appData.addExpenses.length ;i++ ){
+  let ad = appData.addExpenses[i];
+  ad=ad[0].toUpperCase() + ad.slice(1);
+  addexp[i] = ad;
+}
+
+console.log(' appData. С заглавной буквы : ', addexp.join(' , ')); //расходы (addExpenses) вывести строкой 
 for (let i in appData) {
   console.log('ключ : ' + i + ' значение ' + appData[i]);
 }

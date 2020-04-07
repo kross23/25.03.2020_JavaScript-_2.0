@@ -45,8 +45,12 @@ let appData = {
 
     }
 
-    let addExpenses = prompt('Возможные расходы за рассчитываемый период через запятую', 'бензин,молоко,батарейки,спички');
-    appData.addExpenses = addExpenses.toLowerCase().split(',');
+    let add;
+    do {
+      add = prompt('Возможные расходы за рассчитываемый период через запятую', 'бензин,молоко,батарейки,спички');
+    } while (IsNamber(add) || add === '' || add === null);
+
+    appData.addExpenses = add.toLowerCase().split(',');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     for (let i = 1; i < 3; i++) {
